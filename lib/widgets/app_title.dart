@@ -1,3 +1,5 @@
+import 'package:doctor_app/pages/authentication/auth_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class AppTitleBar extends StatelessWidget implements PreferredSizeWidget {
@@ -35,6 +37,16 @@ class AppTitleBar extends StatelessWidget implements PreferredSizeWidget {
           ),
         ],
       ),
+      actions: [
+        IconButton(
+            onPressed: () {
+              FirebaseAuth.instance.signOut();
+              Navigator.of(context).pushReplacement(
+                MaterialPageRoute(builder: (context) => const AuthPage()),
+              );
+            },
+            icon: Icon(Icons.logout))
+      ],
     );
   }
 

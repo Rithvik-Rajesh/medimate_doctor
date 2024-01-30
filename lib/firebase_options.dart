@@ -21,9 +21,15 @@ class DefaultFirebaseOptions {
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
-        return android;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for android - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.iOS:
-        return ios;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for ios - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.macOS:
         return macos;
       case TargetPlatform.windows:
@@ -45,30 +51,11 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions web = FirebaseOptions(
     apiKey: 'AIzaSyCjAgoUez4W5Rjy96Tiuy_kHIRXcQzXTNg',
-    appId: '1:431463946737:web:13cd0f3ee997d9a5d00c50',
+    appId: '1:431463946737:web:1601932d58892453d00c50',
     messagingSenderId: '431463946737',
     projectId: 'project-01-ab6ab',
     authDomain: 'project-01-ab6ab.firebaseapp.com',
     storageBucket: 'project-01-ab6ab.appspot.com',
-  );
-
-  static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyBlLoqa6ysFSbkPYL7F7qK0WDeFBdvNnwg',
-    appId: '1:431463946737:android:6752cddec1eda2c4d00c50',
-    messagingSenderId: '431463946737',
-    projectId: 'project-01-ab6ab',
-    storageBucket: 'project-01-ab6ab.appspot.com',
-  );
-
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyCQq2wYLh4gJf2gG6RQ15YsNL93r2lbvMU',
-    appId: '1:431463946737:ios:c81907ab29fcbe35d00c50',
-    messagingSenderId: '431463946737',
-    projectId: 'project-01-ab6ab',
-    storageBucket: 'project-01-ab6ab.appspot.com',
-    androidClientId: '431463946737-epj4nq9vlgvgn1reo14v0d1bov5sn002.apps.googleusercontent.com',
-    iosClientId: '431463946737-cc6cnmajui7ipm1b8p3ak2gvpuaibt1h.apps.googleusercontent.com',
-    iosBundleId: 'com.example.doctorApp',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(

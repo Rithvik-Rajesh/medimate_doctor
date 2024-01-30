@@ -2,10 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>keychain-access-groups</key>
-    <array>
-        <string>$(AppIdentifierPrefix)com.google.GIDSignIn</string>
-    </array>
 	<key>CLIENT_ID</key>
 	<string>431463946737-k1chong625ohuk353g5o8499cci65jdq.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>

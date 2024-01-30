@@ -12,7 +12,7 @@ class BasePage extends StatefulWidget {
 
 class _BasePageState extends State<BasePage> {
   /// Views to display
-  List<Widget> views =  [
+  List<Widget> views = [
     Center(
       child: Text(
         'Dashboard',
@@ -34,6 +34,7 @@ class _BasePageState extends State<BasePage> {
         style: TextStyle(color: Colors.white, fontSize: 20),
       ),
     ),
+
   ];
 
   /// The currently selected index of the bar

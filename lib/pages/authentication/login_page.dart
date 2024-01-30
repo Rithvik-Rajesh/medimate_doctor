@@ -6,7 +6,6 @@ import 'package:doctor_app/services/auth_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-
 class LoginPage extends StatefulWidget {
   final Function()? onTap;
   const LoginPage({super.key, required this.onTap});
@@ -18,7 +17,6 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   // controller
   final email = TextEditingController();
-
   final password = TextEditingController();
 
   void signIn() async {
@@ -44,13 +42,13 @@ class _LoginPageState extends State<LoginPage> {
       if (mounted) {
         Navigator.pop(context);
       }
-        if (e.code == 'invalid-email') {
-          errorMessage("Incorrect Email");
-        } else if (e.code == 'invalid-credential') {
-          errorMessage("Incorrect Password");
-        }else{
-          errorMessage("${e.code}");
-        }
+      if (e.code == 'invalid-email') {
+        errorMessage("Incorrect Email");
+      } else if (e.code == 'invalid-credential') {
+        errorMessage("Incorrect Password");
+      } else {
+        errorMessage("$e");
+      }
     }
   }
 
@@ -64,7 +62,6 @@ class _LoginPageState extends State<LoginPage> {
       },
     );
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -82,7 +79,7 @@ class _LoginPageState extends State<LoginPage> {
                 const SizedBox(height: 25),
                 const Text(
                   "Welcome",
-                  style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 25),
                 CustomTextField(
@@ -103,23 +100,27 @@ class _LoginPageState extends State<LoginPage> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      GestureDetector(onTap:() {
-                        Navigator.push(context,MaterialPageRoute(builder: (context){
-                          return const ForgotPasswordPage();
-                        }));
-                      }, child: const Text("Forgot Password?", style: TextStyle(fontSize: 16))),
+                      GestureDetector(
+                          onTap: () {
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) {
+                              return const ForgotPasswordPage();
+                            }));
+                          },
+                          child: const Text("Forgot Password?",
+                              style: TextStyle(fontSize: 16))),
                     ],
                   ),
                 ),
                 const SizedBox(height: 25),
-          
+
                 CustomButton(
                   onTap: signIn,
                   text: "Sign In",
                 ),
-          
+
                 const SizedBox(height: 50),
-          
+
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: Row(
@@ -144,23 +145,29 @@ class _LoginPageState extends State<LoginPage> {
                     ],
                   ),
                 ),
-          
+
                 const SizedBox(height: 10),
-          
+
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     // google button
-                    SquareTile(imagePath: 'assets/logo/google.png', onTap: () => { AuthService().signInWithGoogle() },),
-          
+                    SquareTile(
+                      imagePath: 'assets/logo/google.png',
+                      onTap: () => {AuthService().signInWithGoogle()},
+                    ),
+
                     const SizedBox(width: 25),
-          
+
                     // apple button
-                    SquareTile(imagePath: 'assets/logo/apple.png', onTap: () => { },)
+                    SquareTile(
+                      imagePath: 'assets/logo/apple.png',
+                      onTap: () => {},
+                    )
                   ],
                 ),
                 const SizedBox(height: 50),
-          
+
                 // not a member? register now
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,

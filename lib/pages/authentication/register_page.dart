@@ -5,7 +5,6 @@ import 'package:doctor_app/services/auth_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-
 class RegisterPage extends StatefulWidget {
   final Function()? onTap;
   const RegisterPage({super.key, required this.onTap});
@@ -20,7 +19,6 @@ class _RegisterPageState extends State<RegisterPage> {
   final password = TextEditingController();
   final confirmpassword = TextEditingController();
 
-
   void signUp() async {
     showDialog(
       context: context,
@@ -32,15 +30,14 @@ class _RegisterPageState extends State<RegisterPage> {
     );
 
     try {
-      if (confirmpassword.text == password.text){
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: email.text,
-        password: password.text,
-      );
-      }else{
+      if (confirmpassword.text == password.text) {
+        await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: email.text,
+          password: password.text,
+        );
+      } else {
         errorMessage("Password Doesn't Match");
       }
-
 
       if (mounted) {
         Navigator.pop(context);
@@ -102,16 +99,16 @@ class _RegisterPageState extends State<RegisterPage> {
                   // icon: Icon(Icons.search),
                 ),
                 const SizedBox(height: 10),
-        
+
                 const SizedBox(height: 25),
-        
+
                 CustomButton(
                   onTap: signUp,
                   text: "Sign Up",
                 ),
-        
+
                 const SizedBox(height: 20),
-        
+
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: Row(
@@ -136,9 +133,9 @@ class _RegisterPageState extends State<RegisterPage> {
                     ],
                   ),
                 ),
-        
+
                 const SizedBox(height: 10),
-        
+
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -147,15 +144,18 @@ class _RegisterPageState extends State<RegisterPage> {
                       imagePath: 'assets/logo/google.png',
                       onTap: () => {AuthService().signInWithGoogle()},
                     ),
-        
+
                     const SizedBox(width: 25),
-        
+
                     // apple button
-                    SquareTile(imagePath: 'assets/logo/apple.png',onTap: () => {},)
+                    SquareTile(
+                      imagePath: 'assets/logo/apple.png',
+                      onTap: () => {},
+                    )
                   ],
                 ),
                 const SizedBox(height: 20),
-        
+
                 // not a member? register now
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
