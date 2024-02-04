@@ -16,11 +16,11 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppTitleBar(),
+      appBar: const AppTitleBar(),
 
       backgroundColor: Colors.grey[200],
       // drawer: const AppDrawer(),
-      body: BasePage(),
+      body: const BasePage(),
     );
   }
 }

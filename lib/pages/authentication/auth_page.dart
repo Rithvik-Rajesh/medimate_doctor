@@ -50,7 +50,7 @@ class AuthPage extends StatelessWidget {
             checkUserProfile(FirebaseAuth.instance.currentUser!.uid, context);
           }
           // Return a placeholder widget; you might want to customize this part based on your needs
-          return LoginOrRegisterPage();
+          return const LoginOrRegisterPage();
         },
       ),
     );

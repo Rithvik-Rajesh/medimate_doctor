@@ -15,6 +15,9 @@ class _UserInfoPageState extends State<UserInfoPage> {
   TextEditingController specialityController = TextEditingController();
   TextEditingController contactNumberController = TextEditingController();
   TextEditingController emailController = TextEditingController();
+  TextEditingController experienceController = TextEditingController();
+  TextEditingController cityController = TextEditingController();
+  TextEditingController hospitalController = TextEditingController();
 
   // Function to add user information to Firestore
   Future<void> addUserToFirestore() async {
@@ -24,11 +27,16 @@ class _UserInfoPageState extends State<UserInfoPage> {
       await firestore.collection('doctors').add({
         'name': nameController.text,
         'dob': dobController.text,
-        'aboutMe': aboutMeController.text,
+        'aboutme': aboutMeController.text,
         'qualification': qualificationController.text,
-        'speciality': specialityController.text,
-        'contactNumber': contactNumberController.text,
+        'field': specialityController.text,
+        'contactNumber': int.parse(contactNumberController.text) ,
         'email': emailController.text,
+        'Experience': int.parse(experienceController.text),
+        'city': cityController.text,
+        'hospital': hospitalController.text,
+        'rating': 0,
+        'patient_count':0
       });
 
       // Clear text field controllers after adding to Firestore
@@ -39,11 +47,14 @@ class _UserInfoPageState extends State<UserInfoPage> {
       specialityController.clear();
       contactNumberController.clear();
       emailController.clear();
+      experienceController.clear();
+      cityController.clear();
+      hospitalController.clear();
 
       // Show a success message or navigate to the next screen
       // You can customize this part based on your requirements
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
+        const SnackBar(
           content: Text('User information added successfully'),
         ),
       );
@@ -63,51 +74,145 @@ class _UserInfoPageState extends State<UserInfoPage> {
       appBar: AppBar(
         backgroundColor: Colors.grey[900],
         foregroundColor: Colors.white,
-        title: Text('Doctor Information'),
+        title: const Text('Doctor Information'),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(30),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              TextField(
-                cursorColor: Colors.white,
-                controller: nameController,
-                decoration: InputDecoration(labelText: 'Name'),
-              ),
-              TextField(
-                controller: dobController,
-                decoration: InputDecoration(labelText: 'Date of Birth'),
-              ),
-              TextField(
-                controller: aboutMeController,
-                decoration: InputDecoration(labelText: 'About Me'),
-              ),
-              TextField(
-                controller: qualificationController,
-                decoration: InputDecoration(labelText: 'Qualification'),
-              ),
-              TextField(
-                controller: specialityController,
-                decoration: InputDecoration(labelText: 'Speciality'),
-              ),
-              TextField(
-                controller: contactNumberController,
-                decoration: InputDecoration(labelText: 'Contact Number'),
-                keyboardType: TextInputType.phone,
-              ),
-              TextField(
-                controller: emailController,
-                decoration: InputDecoration(labelText: 'Email ID'),
-                keyboardType: TextInputType.emailAddress,
-              ),
-              SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: addUserToFirestore,
-                child: Text('Save'),
-              ),
-            ],
+        padding: const EdgeInsets.only(top:30,left: 30,right: 30),
+        child: Expanded(
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                TextField(
+                  cursorColor: Colors.white,
+                  controller: nameController,
+                  decoration: InputDecoration(
+                      labelStyle: const TextStyle(color: Colors.black),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: const BorderSide(color: Colors.black),
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      labelText: 'Name'),
+                ),
+                const SizedBox(height: 15),
+                TextField(
+                  controller: dobController,
+                  decoration: InputDecoration(
+                      labelStyle: const TextStyle(color: Colors.black),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: const BorderSide(color: Colors.black),
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      labelText: 'Date of Birth'),
+                ),
+                const SizedBox(height: 15),
+                TextField(
+                  controller: aboutMeController,
+                  decoration: InputDecoration(
+                      labelStyle: const TextStyle(color: Colors.black),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: const BorderSide(color: Colors.black),
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      labelText: 'About Me'),
+                ),
+                const SizedBox(height: 15),
+                TextField(
+                  controller: qualificationController,
+                  decoration: InputDecoration(
+                      labelStyle: const TextStyle(color: Colors.black),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: const BorderSide(color: Colors.black),
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      labelText: 'Qualification'),
+                ),
+                const SizedBox(height: 15),
+                TextField(
+                  controller: specialityController,
+                  decoration: InputDecoration(
+                      labelStyle: const TextStyle(color: Colors.black),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: const BorderSide(color: Colors.black),
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      labelText: 'Speciality'),
+                ),
+                const SizedBox(height: 15),
+                TextField(
+                  controller: contactNumberController,
+                  decoration: InputDecoration(
+                      labelStyle: const TextStyle(color: Colors.black),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: const BorderSide(color: Colors.black),
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      labelText: 'Contact Number'),
+                  keyboardType: TextInputType.phone,
+                ),
+                const SizedBox(height: 15),
+                TextField(
+                  controller: emailController,
+                  decoration: InputDecoration(
+                      labelStyle: const TextStyle(color: Colors.black),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: const BorderSide(color: Colors.black),
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      labelText: 'Email ID'),
+                  keyboardType: TextInputType.emailAddress,
+                ),
+                const SizedBox(height: 15),
+                Row(
+                  children: [
+                    Expanded(
+                      child: TextField(
+                        controller: hospitalController,
+                        decoration: InputDecoration(
+                            labelStyle: const TextStyle(color: Colors.black),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(color: Colors.black),
+                              borderRadius: BorderRadius.circular(10.0),
+                            ),
+                            labelText: 'Hospital'),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 20,
+                    ),
+                    Expanded(
+                      child: TextField(
+                        controller: cityController,
+                        decoration: InputDecoration(
+                            labelStyle: const TextStyle(color: Colors.black),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(color: Colors.black),
+                              borderRadius: BorderRadius.circular(10.0),
+                            ),
+                            labelText: 'City'),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 15),
+                TextField(
+                    controller: experienceController,
+                    decoration: InputDecoration(
+                        labelStyle: const TextStyle(color: Colors.black),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(color: Colors.black),
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        labelText: 'Experience'),
+                    keyboardType: TextInputType.number),
+                const SizedBox(height: 20),
+                ElevatedButton(
+                  style: const ButtonStyle(alignment: Alignment.center),
+                  onPressed: addUserToFirestore,
+                  child: const Text('Save'),
+                ),
+              ],
+            ),
           ),
         ),
       ),

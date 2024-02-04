@@ -37,7 +37,7 @@ class _UserDetailsState extends State<UserDetails> {
       await documentReference.set(data);
 
       Navigator.push(
-          context, MaterialPageRoute(builder: (context) => BasePage()));
+          context, MaterialPageRoute(builder: (context) => const BasePage()));
       errorMessage('Details added to Firestore successfully!');
     } catch (e) {
       errorMessage('Error adding details to Firestore: $e');
@@ -80,7 +80,7 @@ class _UserDetailsState extends State<UserDetails> {
       appBar: AppBar(
         backgroundColor: Colors.grey[900],
         foregroundColor: Colors.white,
-        title: Text('Setup Profile'),
+        title: const Text('Setup Profile'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -90,26 +90,26 @@ class _UserDetailsState extends State<UserDetails> {
               controller: name,
               cursorColor: Colors.black,
               decoration: InputDecoration(
-                  labelStyle: TextStyle(color: Colors.black),
+                  labelStyle: const TextStyle(color: Colors.black),
                   labelText: 'Name',
                   focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black),
+                    borderSide: const BorderSide(color: Colors.black),
                     borderRadius: BorderRadius.circular(10.0),
                   )),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             TextField(
               controller: dob,
               cursorColor: Colors.black,
               decoration: InputDecoration(
-                  labelStyle: TextStyle(color: Colors.black),
+                  labelStyle: const TextStyle(color: Colors.black),
                   labelText: 'Date of Birth',
                   focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black),
+                    borderSide: const BorderSide(color: Colors.black),
                     borderRadius: BorderRadius.circular(10.0),
                   )),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Row(
               children: [
                 Expanded(
@@ -117,25 +117,25 @@ class _UserDetailsState extends State<UserDetails> {
                     controller: height,
                     cursorColor: Colors.black,
                     decoration: InputDecoration(
-                      labelStyle: TextStyle(color: Colors.black),
+                      labelStyle: const TextStyle(color: Colors.black),
                       labelText: 'Height',
                       focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.black),
+                        borderSide: const BorderSide(color: Colors.black),
                         borderRadius: BorderRadius.circular(10.0),
                       ),
                     ),
                   ),
                 ),
-                SizedBox(width: 10),
+                const SizedBox(width: 10),
                 Expanded(
                   child: TextField(
                     controller: weight,
                     cursorColor: Colors.black,
                     decoration: InputDecoration(
-                      labelStyle: TextStyle(color: Colors.black),
                       labelText: 'Weight',
+                      labelStyle: const TextStyle(color: Colors.black),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.black),
+                        borderSide: const BorderSide(color: Colors.black),
                         borderRadius: BorderRadius.circular(10.0),
                       ),
                     ),
@@ -143,67 +143,67 @@ class _UserDetailsState extends State<UserDetails> {
                 ),
               ],
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             TextField(
               controller: gender,
               cursorColor: Colors.black,
               decoration: InputDecoration(
-                  labelStyle: TextStyle(color: Colors.black),
+                  labelStyle: const TextStyle(color: Colors.black),
                   labelText: 'Gender',
                   focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black),
+                    borderSide: const BorderSide(color: Colors.black),
                     borderRadius: BorderRadius.circular(10.0),
                   )),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             TextField(
               controller: bloodGroup,
               cursorColor: Colors.black,
               decoration: InputDecoration(
-                  labelStyle: TextStyle(color: Colors.black),
+                  labelStyle: const TextStyle(color: Colors.black),
                   labelText: 'Blood Group',
                   focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black),
+                    borderSide: const BorderSide(color: Colors.black),
                     borderRadius: BorderRadius.circular(10.0),
                   )),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             TextField(
               controller: city,
               cursorColor: Colors.black,
               decoration: InputDecoration(
-                  labelStyle: TextStyle(color: Colors.black),
+                  labelStyle: const TextStyle(color: Colors.black),
                   labelText: 'City',
                   focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black),
+                    borderSide: const BorderSide(color: Colors.black),
                     borderRadius: BorderRadius.circular(10.0),
                   )),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             TextField(
               controller: phoneno,
               cursorColor: Colors.black,
               decoration: InputDecoration(
-                  labelStyle: TextStyle(color: Colors.black),
+                  labelStyle: const TextStyle(color: Colors.black),
                   labelText: 'Phone No',
                   focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black),
+                    borderSide: const  BorderSide(color: Colors.black),
                     borderRadius: BorderRadius.circular(10.0),
                   )),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             TextField(
               controller: emphoneno,
               cursorColor: Colors.black,
               decoration: InputDecoration(
-                  labelStyle: TextStyle(color: Colors.black),
+                  labelStyle: const TextStyle(color: Colors.black),
                   labelText: 'Emergency Phone No',
                   focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black),
+                    borderSide: const BorderSide(color: Colors.black),
                     borderRadius: BorderRadius.circular(10.0),
                   )),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.grey[900],
@@ -212,7 +212,7 @@ class _UserDetailsState extends State<UserDetails> {
               onPressed: () {
                 addUserDetails();
               },
-              child: Text('Submit'),
+              child: const Text('Submit'),
             ),
           ],
         ),

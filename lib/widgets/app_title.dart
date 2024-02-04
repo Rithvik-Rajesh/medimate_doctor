@@ -45,7 +45,7 @@ class AppTitleBar extends StatelessWidget implements PreferredSizeWidget {
                 MaterialPageRoute(builder: (context) => const AuthPage()),
               );
             },
-            icon: Icon(Icons.logout))
+            icon: const Icon(Icons.logout))
       ],
     );
   }

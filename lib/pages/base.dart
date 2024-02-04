@@ -13,7 +13,7 @@ class BasePage extends StatefulWidget {
 class _BasePageState extends State<BasePage> {
   /// Views to display
   List<Widget> views = [
-    Center(
+    const Center(
       child: Text(
         'Dashboard',
         style: TextStyle(color: Colors.white, fontSize: 20),
@@ -22,13 +22,13 @@ class _BasePageState extends State<BasePage> {
     Center(
       child: UserInfoPage(),
     ),
-    Center(
+    const Center(
       child: Text(
         'Account',
         style: TextStyle(color: Colors.white, fontSize: 20),
       ),
     ),
-    Center(
+    const Center(
       child: Text(
         'Settings',
         style: TextStyle(color: Colors.white, fontSize: 20),
@@ -44,7 +44,7 @@ class _BasePageState extends State<BasePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[900],
-      appBar: AppTitleBar(),
+      appBar: const AppTitleBar(),
       body: Row(
         children: [
           SideNavigationBar(
